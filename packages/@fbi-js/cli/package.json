@@ -1,0 +1,16 @@
+{
+  "name": "@fbi-js/cli",
+  "version": "5.0.0-alpha.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "fbi-cli": "bin/run"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@fbi-js/utils": "^1.0.0"
+  },
+  "keywords": [],
+  "author": "shaw",
+  "license": "MIT"
+}

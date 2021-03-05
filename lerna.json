@@ -1,0 +1,16 @@
+{
+  "packages": ["packages/*", "packages/@fbi-js/*"],
+  "version": "independent",
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "ignoreChanges": [],
+      "message": "chore(release): publish",
+      "registry": "http://registry.npmjs.org"
+    },
+    "bootstrap": {
+      "npmClientArgs": ["--no-package-lock", "--legacy-peer-deps"]
+    }
+  }
+}
