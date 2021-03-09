@@ -1,6 +1,7 @@
 {
   "name": "fbi-next",
   "private": "true",
+  "workspaces": ["packages/*", "packages/@fbi-js/*"],
   "devDependencies": {
     "lerna": "^3.22.1"
   }

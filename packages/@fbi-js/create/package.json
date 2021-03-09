@@ -1,0 +1,13 @@
+{
+  "name": "@fbi-js/create",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "fbi-create": "bin/run"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "shaw",
+  "license": "MIT"
+}

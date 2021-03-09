@@ -3,6 +3,8 @@ const { spawn } = require('@fbi-js/utils')
 
 module.exports = async function cli () {
   const args = process.argv.slice(2)
+  const subArgs = args.slice(1)
+  console.log({ args, subArgs })
   const command = args[0]
 
   if (!command) {
@@ -35,11 +37,14 @@ module.exports = async function cli () {
   // npx fbi-cli fbi-commit
   // npx fbi-cli @fbi-js/commit
   // npx fbi-cli file:../packages/@fbi-js/commit
-  const cmdStr = `npx ${package} ${args.slice(1)}`
+  const cmdStr = `npx ${package}${
+    subArgs.length > 0 ? ' ' + subArgs.join(' ') : ''
+  }`
   console.log(`Running '${cmdStr}'...`)
 
   try {
-    await spawn(`npx`, [package, ...args.slice(1)], {
+    // pass `process.argv` to subCommand
+    await spawn(`npx`, [package, ...subArgs], {
       stdio: 'inherit'
     })
     console.log(`Done '${cmdStr}'`)

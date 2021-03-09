@@ -1,8 +1,8 @@
 {
-  "packages": ["packages/*", "packages/@fbi-js/*"],
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
+  "workspaces": ["packages/*", "packages/@fbi-js/*"],
   "command": {
     "publish": {
       "ignoreChanges": [],

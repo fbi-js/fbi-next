@@ -1,3 +1,4 @@
 module.exports = async function commit () {
-  console.log('running fbi-commit')
+  const args = process.argv.slice(2)
+  console.log('running fbi-commit', args)
 }

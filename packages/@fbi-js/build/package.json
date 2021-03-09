@@ -1,0 +1,13 @@
+{
+  "name": "@fbi-js/build",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "fbi-build": "bin/run"
+  },
+  "scripts": {},
+  "keywords": [],
+  "author": "shaw",
+  "license": "MIT"
+}
