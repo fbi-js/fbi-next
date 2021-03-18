@@ -1,0 +1,17 @@
+{
+  "name": "@fbi-js/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "shaw",
+  "license": "MIT",
+  "dependencies": {
+    "kleur": "^4.1.4",
+    "prompts": "^2.4.0",
+    "fs-extra": "^9.1.0",
+    "globby": "^11.0.2",
+    "mri": "^1.1.6"
+  }
+}

@@ -2,7 +2,7 @@
   "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "workspaces": ["packages/*", "packages/@fbi-js/*"],
+  "workspaces": ["packages/*", "packages/commands/*"],
   "command": {
     "publish": {
       "ignoreChanges": [],

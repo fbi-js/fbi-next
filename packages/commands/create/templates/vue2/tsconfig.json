@@ -1,0 +1,8 @@
+{
+  "extends": "@fbi-js/tsconfig/vue",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

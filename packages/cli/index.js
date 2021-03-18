@@ -1,33 +1,31 @@
 const path = require('path')
-const { spawn } = require('@fbi-js/utils')
+const { spawn, argParse } = require('@fbi-js/utils')
 
 module.exports = async function cli () {
-  const args = process.argv.slice(2)
-  const subArgs = args.slice(1)
-  console.log({ args, subArgs })
-  const command = args[0]
+  const args = argParse(process.argv.slice(2))
+  const command = args._[0]
 
   if (!command) {
     console.log('Usage: npx fbi-cli [command] [options]')
     process.exit()
   }
 
+  const subArgs = process.argv.slice(3)
+
   // For local test
   // e.g.: npx fbi-cli commit --local
-  const isLocal = args.includes('--local')
+  const isLocal = args.local
 
   let package = `${
-    command.startsWith('@fbi-js') ||
-    command.startsWith('fbi-') ||
-    command.startsWith('file:')
+    isLocal || command.startsWith('@') || command.startsWith('file:')
       ? ''
       : '@fbi-js/'
-  }${command}`
+  }${command.startsWith('fbi-') ? command.slice(4) : command}`
 
   if (isLocal && !package.startsWith('file:')) {
     const relativePath = path.relative(
       process.cwd(),
-      path.join(__dirname, '../../')
+      path.join(__dirname, '../commands/')
     )
     package = `file:${relativePath}/${package}`
   }
@@ -37,17 +35,10 @@ module.exports = async function cli () {
   // npx fbi-cli fbi-commit
   // npx fbi-cli @fbi-js/commit
   // npx fbi-cli file:../packages/@fbi-js/commit
-  const cmdStr = `npx ${package}${
-    subArgs.length > 0 ? ' ' + subArgs.join(' ') : ''
-  }`
-  console.log(`Running '${cmdStr}'...`)
-
   try {
-    // pass `process.argv` to subCommand
     await spawn(`npx`, [package, ...subArgs], {
       stdio: 'inherit'
     })
-    console.log(`Done '${cmdStr}'`)
   } catch (err) {
     console.log(err.message)
     process.exit(1)
