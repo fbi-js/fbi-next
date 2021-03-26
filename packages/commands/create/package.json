@@ -14,5 +14,9 @@
     "@fbi-js/utils": "^1.0.0",
     "ejs": "^3.1.6",
     "normalize-path": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
   }
 }

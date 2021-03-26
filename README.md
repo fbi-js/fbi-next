@@ -18,22 +18,24 @@ npx fbi commit
 
 ## Commands
 
-- `create`: create a new project via templates
+- [x] `create`: create a new project via templates
   - templates:
-    - react
-    - vue
-    - vue2
-- `serve`: starts a dev (or static) server
+    - [x] react
+    - [x] vue
+    - [x] vue2
+    - [x] multi-pkg
+    - [ ] single-pkg
+- [x] `commit`: git commit
+- [x] `format`: code format(standard)
+- [ ] `serve`: starts a dev (or static) server
   - vite
   - webpack
-- `build`: produces a production-ready bundle
+- [ ] `build`: produces a production-ready bundle
   - rollup
   - webpack
-- `release`: package release
-- `commit`: git commit
-- `lint`: eslint
-- `format`: code format(standard)
-- `test`?: unit tests
+- [ ] `release`: package release
+- [ ] `lint`: eslint
+- [ ] `test`?: unit tests
 
 ## Configs
 

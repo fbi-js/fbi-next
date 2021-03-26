@@ -1,20 +1,38 @@
 {
-  "name": "<%= project.name %>",
+  "name": "<%= create.name %>",
   "version": "0.0.0",
-  "description": "<%= project.description %>",
+  "description": "<%= create.description %>",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "format": "npx fbi format"
   },
   "dependencies": {
     "vue": "^3.0.5"
   },
   "devDependencies": {
+    "@fbi-js/cli": "^5.0.0-alpha.0",
+    "@fbi-js/eslint-config-vue-typescript": "^1.2.2",
+    "@fbi-js/format": "^1.0.0",
     "@vitejs/plugin-vue": "^1.1.5",
     "@vue/compiler-sfc": "^3.0.5",
     "typescript": "^4.1.3",
     "vite": "^2.1.0",
     "vue-tsc": "^0.0.8"
+  },
+  "fbi": {
+    "create": {
+      "template": "<%= create.template %>",
+      "features": <%- JSON.stringify(create.features) %>
+    },
+    "format": {
+      "pattern": "src/**/*"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "@fbi-js/eslint-config-vue-typescript"
+    ]
   }
 }

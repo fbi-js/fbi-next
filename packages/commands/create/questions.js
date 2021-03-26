@@ -28,6 +28,23 @@ async function chooseTemplate (template) {
   return templates.find(t => t.value === name)
 }
 
+async function chooseFeatues (features) {
+  const { choices } = await prompt(
+    {
+      type: 'multiselect',
+      name: 'choices',
+      message: 'Pick features',
+      choices: features,
+      hint: '- Space to select. Return to submit'
+    },
+    {
+      onCancel
+    }
+  )
+
+  return choices
+}
+
 async function chooseTargetDir (dir = process.cwd(), name, prevDir) {
   let target = dir
   const dirName = basename(prevDir || dir)
@@ -87,5 +104,6 @@ function onCancel () {
 
 module.exports = {
   chooseTemplate,
+  chooseFeatues,
   chooseTargetDir
 }

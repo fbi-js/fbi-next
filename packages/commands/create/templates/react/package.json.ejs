@@ -1,12 +1,12 @@
 {
-  "name": "<%= project.name %>",
+  "name": "<%= create.name %>",
   "version": "0.0.0",
-  "description": "<%= project.description %>",
+  "description": "<%= create.description %>",
   "private": true,
   "scripts": {
     "dev": "fbi serve",
     "build": "fbi build",
-    "format": "fbi format"
+    "format": "npx fbi format <% if (process.env.FBI_ENV) { %>--local <% } %>"
   },
   "dependencies": {
     "react": "^17.0.1",
@@ -15,11 +15,18 @@
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "@fbi-js/eslint-config-react-typescript": "^1.2.2",
+    "@fbi-js/cli": "^5.0.0-alpha.0",
+    "@fbi-js/format": "^1.0.0"
   },
   "fbi": {
-    "project": {
-      "template": "<%= project.template %>"
+    "create": {
+      "template": "<%= create.template %>",
+      "features": <%- JSON.stringify(create.features) %>
+    },
+    "format": {
+      "pattern": "src/**/*"
     }
   },
   "browserslist": [
@@ -29,7 +36,7 @@
   ],
   "eslintConfig": {
     "extends": [
-      "@fbi-js/react-typescript"
+      "@fbi-js/eslint-config-react-typescript"
     ],
     "rules": {
       "semi": [
@@ -56,7 +63,10 @@
   "prettier": {
     "semi": false,
     "tabWidth": 2,
+    "endOfLine": "lf",
+    "printWidth": 80,
     "singleQuote": true,
-    "trailingComma": "none"
+    "trailingComma": "none",
+    "arrowParens": "always"
   }
 }

@@ -1,10 +1,10 @@
 const cp = require('child_process')
 
-module.exports = function spawn (cmd, args, opts) {
+module.exports = function spawn (cmd, opts) {
   opts = opts || {}
   opts.shell = opts.shell || process.platform === 'win32'
   return new Promise((resolve, reject) => {
-    const child = cp.spawn(cmd, args, opts)
+    const child = cp.spawn(cmd.split(' ')[0], cmd.split(' ').slice(1), opts)
     let stdout = ''
     let stderr = ''
     child.stdout &&
@@ -18,7 +18,7 @@ module.exports = function spawn (cmd, args, opts) {
     child.on('error', reject)
     child.on('close', code => {
       if (code) {
-        const err = new Error(`Command failed: ${cmd} ${args.join(' ')}`)
+        const err = new Error(`Command failed: ${cmd}`)
         err.isOperational = true
         err.stderr = stderr
         err.exitCode = code

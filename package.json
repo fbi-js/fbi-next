@@ -1,7 +1,12 @@
 {
   "name": "fbi-next",
   "private": "true",
-  "workspaces": ["packages/*", "packages/commands/*"],
+  "workspaces": [
+    "packages/*",
+    "packages/commands/*",
+    "packages/configs/*",
+    "examples/*"
+  ],
   "devDependencies": {
     "lerna": "^3.22.1"
   }

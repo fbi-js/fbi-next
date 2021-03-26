@@ -9,5 +9,13 @@
   "scripts": {},
   "keywords": [],
   "author": "shaw",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "npm": ">=6"
+  },
+  "dependencies": {
+    "@fbi-js/utils": "^1.0.0",
+    "standard-version": "^9.1.1"
+  }
 }

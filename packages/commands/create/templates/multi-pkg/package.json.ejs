@@ -1,0 +1,56 @@
+{
+  "name": "<%= create.name %>",
+  "description": "<%= create.description %>",
+  "private": "true",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "lerna run watch --parallel",
+    <%_ if (create.features.includes('typescript')) { _%>
+    "build": "lerna run build",
+    <%_ } _%>
+    "format": "npx fbi format <% if (process.env.FBI_ENV) { %>--local <% } %>",
+    "version": "lerna version",
+    "release": "lerna publish from-package",
+    "release:beta": "lerna publish from-package --preid beta --dist-tag next"
+  },
+  "devDependencies": {
+    <%_ if (create.features.includes('typescript')) { _%>
+    "@fbi-js/eslint-config-typescript": "^1.2.2",
+    "@types/node": "^14.14.35",
+    "typescript": "^4.2.3",
+    <%_ } else { _%>
+    "@fbi-js/eslint-config": "^1.2.2",
+    <%_ } _%>
+    "@fbi-js/cli": "^5.0.0-alpha.0",
+    "@fbi-js/format": "^1.0.0",
+    "lerna": "^4.0.0",
+    "eslint": "^7.22.0",
+    "prettier": "^2.2.1"
+  },
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "@fbi-js/eslint-config<%_ if (create.features.includes('typescript')) { _%>-typescript<%_ } _%>"
+    ]
+  },
+  "fbi": {
+    "create": {
+      "template": "<%= create.template %>",
+      "features": <%- JSON.stringify(create.features) %>
+    },
+    "format": {
+      "pattern": "packages/**/*"
+    }
+  },
+  "prettier": {
+    "semi": false,
+    "tabWidth": 2,
+    "endOfLine": "lf",
+    "printWidth": 80,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "arrowParens": "always"
+  }
+}

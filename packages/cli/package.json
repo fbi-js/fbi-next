@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "fbi-cli": "bin/run"
+    "fbi": "bin/run"
   },
   "scripts": {},
   "dependencies": {
-    "@fbi-js/utils": "^1.0.0"
+    "@fbi-js/utils": "file:../utils"
   },
   "keywords": [],
   "author": "shaw",
   "license": "MIT",
   "engines": {
-    "node": ">=10"
+    "node": ">=10",
+    "npm": ">=6"
   }
 }
