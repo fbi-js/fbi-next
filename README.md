@@ -7,7 +7,7 @@
 ```bash
 yarn
 npx lerna bootstrap
-npx fbi-cli commit --local
+npx fbi commit --local
 ```
 
 ## Prod
